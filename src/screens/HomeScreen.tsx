@@ -77,7 +77,7 @@ const HomeScreen = () => {
         <Image
           style={{ width: hp(7), height: hp(7) }}
           source={require('./assets/images/userpic.png')} />
-
+          
         <BellIcon size={hp(4)} color={'gray'} style={{ marginTop: hp(2) }} />
       </View>
       <View>
@@ -114,18 +114,15 @@ const HomeScreen = () => {
             activeCatagory={activeCatagory}
             handleChangeCatagory={handleChangeCatagory}
           />
-        )}
-      </View>
-
-
-
-
+        )}     
+        </View>
       {/*recipies cards */}
       <View>
         {mealss && catagoriesDataNew.length > 0 && (
           <RecipeData
             meal={mealss}
             catagoriesDataNew={catagoriesDataNew}
+           
           />
         )}
 

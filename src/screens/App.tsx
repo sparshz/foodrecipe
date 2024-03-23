@@ -1,34 +1,32 @@
-// index.tsx (or whatever the filename is)
+
 import { StyleSheet, Text, View } from 'react-native'
 import {NavigationContainer,RouteProp} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import HomeScreen from './src/screens/HomeScreen'
-import WelcomeScreen from './src/screens/WelcomeScreen'
+import HomeScreen from './HomeScreen'
+import WelcomeScreen from './WelcomeScreen'
 import React from 'react'
-import RecipeDataScreen from './src/screens/RecipeDataScreen'
+import RecipeDataScreen from './RecipeDataScreen'
 
-interface Recipe {
+
+export type StackParamList = {
+  Home: undefined;
+  Welcome: undefined;
+  RecipeDataDetail: {data:string};
+};
+
+
+type Recipe ={
   strMeal: string;
   strMealThumb: string;
   idMeal: number;
 }
-
-
-type stackScreens = {
-  Home: undefined;
-  Welcome:undefined;
-  RecipeDataDetail:{meals:Recipe[]};
-};
+type item = {
+  items:Recipe;
+}
 
 
 
-// type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
-// type WelcomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Welcome'>;
-
-
-
-
-const Stack  = createNativeStackNavigator<stackScreens>();
+const Stack  = createNativeStackNavigator<StackParamList>(); 
 
 const App: React.FC = () => {
   return (
@@ -36,7 +34,10 @@ const App: React.FC = () => {
         <Stack.Navigator initialRouteName="Welcome" screenOptions={{headerShown:false}}>
             <Stack.Screen name="Home" component={HomeScreen}/>
             <Stack.Screen name="Welcome" component={WelcomeScreen}/>
-            <Stack.Screen name="RecipeDataDetail" component={RecipeDataScreen}  />
+            {/* <Stack.Screen 
+            name="RecipeDataDetail" 
+            component={RecipeDataScreen}  
+            initialParams={{data:" "}} /> */}
         </Stack.Navigator>
     </NavigationContainer>
   )
